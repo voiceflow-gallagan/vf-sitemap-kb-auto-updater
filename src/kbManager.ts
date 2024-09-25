@@ -55,9 +55,9 @@ export async function uploadDocument(url: string, overwrite: boolean, apiKey: st
 
   const result = await response.json();
 
-  if (result && typeof result === 'object' && 'data' in result && Array.isArray(result.data)) {
-    await Promise.all(result.data.map(doc => updateLocalDb(doc as Document)));
-    return true; // Documents were updated
+  if (result && typeof result === 'object' && 'data' in result && typeof result.data === 'object') {
+    await updateLocalDb(result.data as Document);
+    return true; // Document was updated
   } else {
     console.error('Invalid API response:', result);
     return false;
@@ -78,9 +78,9 @@ async function updateLocalDb(document: Document) {
     const index = documents.findIndex(doc => doc.documentID === document.documentID);
 
     if (index !== -1) {
-      console.log('Document already exists: Conflict');
+      documents[index] = document; // Update existing document
     } else {
-      documents.push(document);
+      documents.push(document); // Add new document
     }
   } else {
     console.error('Document is undefined or missing documentID');
