@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      - VOICEFLOW_API_KEY=${VOICEFLOW_API_KEY}
+      - USE_CRON=${USE_CRON:-false}
+      - PORT=${PORT:-3000}
+    volumes:
+      - ./db:/app/db
+      - ./sitemaps.txt:/app/sitemaps.txt
+    restart: unless-stopped
