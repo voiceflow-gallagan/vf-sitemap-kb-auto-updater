@@ -6,6 +6,7 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 dockerd-rootless-setuptool.sh install
 sudo loginctl enable-linger ubuntu
+rm get-docker.sh
 # Clone the repository
 echo "Cloning the repository..."
 git clone https://github.com/voiceflow-gallagan/vf-sitemap-kb-auto-updater.git "vf-sitemap"

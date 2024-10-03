@@ -80,3 +80,18 @@ https://example.com/sitemap1.xml
 https://example.com/sitemap2.xml
 https://another-site.com/sitemap.xml
 ```
+
+## Install on Linux
+
+```
+curl -sSL https://raw.githubusercontent.com/voiceflow-gallagan/vf-sitemap-kb-auto-updater/main/install.sh | bash
+```
+
+Always review scripts before running them, especially when downloading and executing in one command.
+Make sure you trust the source of the script.
+If you want to review the script before running it, you can download it first and then execute it:
+
+```
+curl -sSL https://raw.githubusercontent.com/voiceflow-gallagan/vf-sitemap-kb-auto-updater/main/install.sh -o install.sh
+bash install.sh
+```
