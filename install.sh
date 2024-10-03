@@ -20,27 +20,18 @@ git clone https://github.com/voiceflow-gallagan/vf-sitemap-kb-auto-updater.git "
 echo "Changing to the project directory..."
 cd vf-sitemap
 
-# Ask for Voiceflow API Key
-echo "Prompting for Voiceflow API Key..."
-read -p "Enter your Voiceflow API Key: " VF_API_KEY
-
-# Check if VF_API_KEY is empty
+# Check for Voiceflow API Key
 if [ -z "$VF_API_KEY" ]; then
-    echo "Error: Voiceflow API Key cannot be empty."
+    echo "Error: Voiceflow API Key is not set. Please run the script with VF_API_KEY environment variable."
+    echo "Example: VF_API_KEY=your_vf_api_key PORT=3000 USE_CRON=true bash -c \"$(curl -fsSL https://raw.githubusercontent.com/voiceflow-gallagan/vf-sitemap-kb-auto-updater/main/install.sh)\""
     exit 1
 fi
 
 echo "API Key received: ${VF_API_KEY:0:5}..." # Print first 5 characters for verification
 
-
-# Set default port
-PORT=3000
-
-# Check if port 3000 is in use
-while nc -z localhost $PORT 2>/dev/null; do
-    echo "Port $PORT is already in use."
-    read -p "Enter a different port number: " PORT
-done
+# Set default settings
+PORT=${PORT:-3000}
+USE_CRON=${USER_CRON:-false}
 
 echo "Service will run on port: $PORT"
 
@@ -49,7 +40,7 @@ echo "Creating .env file..."
 cat << EOF > .env
 VOICEFLOW_API_KEY=$VF_API_KEY
 PORT=$PORT
-USE_CRON=false
+USE_CRON=$USE_CRON
 EOF
 
 echo ".env file created successfully."

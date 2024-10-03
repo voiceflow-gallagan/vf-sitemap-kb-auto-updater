@@ -84,7 +84,7 @@ https://another-site.com/sitemap.xml
 ## Install on Linux
 
 ```
-curl -sSL https://raw.githubusercontent.com/voiceflow-gallagan/vf-sitemap-kb-auto-updater/main/install.sh | bash
+VF_API_KEY=your_api_key PORT=3000 USE_CRON=true bash -c "$(curl -fsSL https://raw.githubusercontent.com/voiceflow-gallagan/vf-sitemap-kb-auto-updater/main/install.sh)"
 ```
 
 Always review scripts before running them, especially when downloading and executing in one command.
@@ -92,6 +92,7 @@ Make sure you trust the source of the script.
 If you want to review the script before running it, you can download it first and then execute it:
 
 ```
-curl -sSL https://raw.githubusercontent.com/voiceflow-gallagan/vf-sitemap-kb-auto-updater/main/install.sh -o install.sh
-bash install.sh
+curl -sSLO https://raw.githubusercontent.com/voiceflow-gallagan/vf-sitemap-kb-auto-updater/main/install.sh -o install.sh
+chmod +x install.sh
+VF_API_KEY=your_vf_api_key PORT=3000 USE_CRON=true ./install.sh
 ```
