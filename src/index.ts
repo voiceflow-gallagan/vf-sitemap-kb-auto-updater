@@ -23,7 +23,7 @@ if (useCron) {
     console.log('Running weekly sitemap processing task');
     const sitemaps = await readSitemapsFromFile();
     if (sitemaps.length > 0) {
-      processSitemaps(sitemaps);
+      processSitemaps(sitemaps, Bun.env.VOICEFLOW_API_KEY || '');
     } else {
       console.log('No sitemaps found in sitemaps.txt');
     }
@@ -45,10 +45,11 @@ const server = serve({
     }
 
     if (req.method === "POST" && url.pathname === "/process-sitemaps") {
-      const body = await req.json() as { sitemaps?: unknown; apiKey?: string };
+      const body = await req.json() as { sitemaps?: unknown; apikey?: string };
       if (Array.isArray(body.sitemaps)) {
-        const apiKey = body.apiKey || Bun.env.VOICEFLOW_API_KEY;
-        processSitemaps(body.sitemaps, apiKey);
+        const apikey = body.apikey || Bun.env.VOICEFLOW_API_KEY;
+        if (!apikey) throw new Error('API key is required');
+        processSitemaps(body.sitemaps, apikey);
         return new Response("Processing sitemaps", { status: 202 });
       }
       return new Response("Invalid request body", { status: 400 });

@@ -59,14 +59,14 @@ PORT=3000
   ```json
   {
     "sitemaps": ["https://example.com/sitemap1.xml", "https://example.com/sitemap2.xml"],
-    "apiKey": "optional_api_key_to_override_env_variable"
+    "apikey": "optional_api_key_to_override_env_variable"
   }
   ```
 - **Response**:
   - Success: Status 202 with message "Processing sitemaps"
   - Error: Status 400 with message "Invalid request body"
 
-Note: If `apiKey` is provided in the request body, it will be used instead of the one in the `.env` file.
+Note: If `apikey` is provided in the request body, it will be used instead of the one in the `.env` file.
 
 ## Cron Job
 
