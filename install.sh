@@ -2,7 +2,7 @@
 set -e  # Exit immediately if a command exits with a non-zero status.
 
 echo "Starting installation script..."
-
+sudo apt-get update
 sudo apt-get install -y uidmap
 # Install Docker
 echo "Installing Docker..."
