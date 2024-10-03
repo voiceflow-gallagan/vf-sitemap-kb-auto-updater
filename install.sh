@@ -15,6 +15,26 @@ git clone https://github.com/voiceflow-gallagan/vf-sitemap-kb-auto-updater.git "
 echo "Changing to the project directory..."
 cd vf-sitemap
 
+# Ask for Voiceflow API Key
+read -p "Enter your Voiceflow API Key: " VF_API_KEY
+
+# Set default port
+PORT=3000
+
+# Check if port 3000 is in use
+while nc -z localhost $PORT 2>/dev/null; do
+    echo "Port $PORT is already in use."
+    read -p "Enter a different port number: " PORT
+done
+
+# Create .env file
+echo "Creating .env file..."
+cat << EOF > .env
+VOICEFLOW_API_KEY=$VF_API_KEY
+PORT=$PORT
+USE_CRON=true
+EOF
+
 # Build and start the Docker containers in detached mode
 echo "Building and starting Docker containers..."
 docker compose up --build -d
