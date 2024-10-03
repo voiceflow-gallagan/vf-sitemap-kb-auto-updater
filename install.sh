@@ -8,11 +8,11 @@ dockerd-rootless-setuptool.sh install
 sudo loginctl enable-linger ubuntu
 # Clone the repository
 echo "Cloning the repository..."
-git clone https://github.com/voiceflow-gallagan/vf-sitemap-kb-auto-updater.git
+git clone https://github.com/voiceflow-gallagan/vf-sitemap-kb-auto-updater.git "vf-sitemap"
 
 # Change to the project directory
 echo "Changing to the project directory..."
-cd vf-sitemap-kb-auto-updater
+cd vf-sitemap
 
 # Build and start the Docker containers in detached mode
 echo "Building and starting Docker containers..."
