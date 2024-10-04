@@ -83,6 +83,9 @@ https://another-site.com/sitemap.xml
 
 ## Install on Linux
 
+The install script will install the dependencies, docker compose and start the service.
+Tested on AWS Lightsail (Ubuntu 22.04).
+
 ```
 VF_API_KEY=your_api_key PORT=3000 USE_CRON=true bash -c "$(curl -fsSL https://raw.githubusercontent.com/voiceflow-gallagan/vf-sitemap-kb-auto-updater/main/install.sh)"
 ```

@@ -2,8 +2,14 @@
 set -e  # Exit immediately if a command exits with a non-zero status.
 
 echo "Starting installation script..."
+echo "Updating package list..."
+# Update package list
 sudo apt-get update
+
+echo "Installing uidmap..."
+# Install uidmap
 sudo apt-get install -y uidmap
+
 # Install Docker
 echo "Installing Docker..."
 curl -fsSL https://get.docker.com -o get-docker.sh
@@ -27,7 +33,7 @@ if [ -z "$VF_API_KEY" ]; then
     exit 1
 fi
 
-echo "API Key received: ${VF_API_KEY:0:5}..." # Print first 5 characters for verification
+echo "API Key received: ${VF_API_KEY:0:20}..." # Print first 20 characters
 
 # Set default settings
 PORT=${PORT:-3000}
