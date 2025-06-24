@@ -99,3 +99,6 @@ curl -sSLO https://raw.githubusercontent.com/voiceflow-gallagan/vf-sitemap-kb-au
 chmod +x install.sh
 VF_API_KEY=your_vf_api_key PORT=3000 USE_CRON=true ./install.sh
 ```
+
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=voiceflow-community_vf-sitemap-kb-auto-updater&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=voiceflow-community_vf-sitemap-kb-auto-updater)
